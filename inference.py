@@ -64,7 +64,7 @@ def find_face(input_image):
     out_size = 128
 
     frame = input_image
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
     color_for_detection = gray
 
     #Detect face using 4 different classifiers
@@ -89,8 +89,6 @@ def find_face(input_image):
     for (x, y, w, h) in facefeatures: #get coordinates and size of rectangle containing face
         color = frame[y:y+h, x:x+w] #Cut the frame to size
         out = cv2.resize(color, (out_size, out_size)) #Resize face so all images have same size
-
-    out = cv2.cvtColor(out, cv2.COLOR_BGR2RGB)
 
     return out
 
